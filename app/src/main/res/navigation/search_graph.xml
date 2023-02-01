@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_graph"
+    app:startDestination="@id/searchAndInfoFragment">
+
+    <fragment
+        android:id="@+id/searchAndInfoFragment"
+        android:name="com.example.shift.presentation.SearchAndInfoFragment"
+        android:label="SearchAndInfoFragment">
+
+    </fragment>
+</navigation>
