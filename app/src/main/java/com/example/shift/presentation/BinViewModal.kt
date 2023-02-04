@@ -16,6 +16,8 @@ import com.example.shift.data.BinRepositoryImpl
 import com.example.shift.data.Mapper
 import com.example.shift.data.network.ApiFactory
 import com.example.shift.data.network.modal.AnswerDto
+import com.example.shift.domain.GetItemUseCase
+import com.example.shift.domain.GetListBinUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,24 +25,28 @@ import retrofit2.Response
 
 class BinViewModal(application: Application) : AndroidViewModel(application) {
 
-    private val repository = BinRepositoryImpl()
-    private val mapper = Mapper()
+    private val repository = BinRepositoryImpl(application)
 
     private val searchUseCase = SearchUseCase(repository)
+    private val getListBinUseCase = GetListBinUseCase(repository)
 
     private var _infoBin = MutableLiveData<InfoItem>()
     val infoBin: LiveData<InfoItem>
         get() = _infoBin
 
+//    private var _listBin = MutableLiveData<InfoItem>()
+//    val listBin: LiveData<InfoItem>
+//        get() = _listBin
+
     fun searchForBin(bin: Int) {
         viewModelScope.launch {
             try {
-                val item = repository.searchUseCase(bin)
-                Log.d("test", item.toString())
-                _infoBin.value = mapper.mapAnswerDtoToInfoItem(item)
+                _infoBin.value = repository.searchUseCase(bin)
             } catch (e: Exception) {
-                Log.d("test", e.toString())
+                Log.d("testErr", e.toString())
             }
         }
     }
+
+    val binHistoryList = repository.gelListBinUseCase().asLiveData()
 }

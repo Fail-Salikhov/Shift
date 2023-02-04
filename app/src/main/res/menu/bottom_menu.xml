@@ -7,4 +7,10 @@
         android:icon="@drawable/baseline_info_24"
         android:title="Search an Info"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@id/history_graph"
+        android:icon="@drawable/baseline_history_24"
+        android:title="Hystory"
+        app:showAsAction="ifRoom" />
 </menu>
