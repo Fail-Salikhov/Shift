@@ -6,4 +6,5 @@
 
     <include app:graph="@navigation/search_graph" />
 
+    <include app:graph="@navigation/history_graph" />
 </navigation>

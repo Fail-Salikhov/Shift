@@ -7,7 +7,9 @@ import retrofit2.Response
 
 interface BinRepository {
 
-    suspend fun searchUseCase (bin: Int) : AnswerDto
+    suspend fun searchUseCase (bin: Int) : InfoItem
 
-    fun getItemUseCase (bin: Int) : Flow<InfoItem>
+    fun getItemUseCase (bin: Int) : Flow<List<InfoItem>>
+
+    fun gelListBinUseCase () : Flow<List<InfoItem>>
 }

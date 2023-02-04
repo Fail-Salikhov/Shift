@@ -1,7 +1,7 @@
 package com.example.shift.domain
 
 data class InfoItem(
-    var bin : Int = NON_ID,
+    val bin : Int = NON_ID,
     val brand : String?,
     val type : String?,
     val country : String?,
