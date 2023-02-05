@@ -1,6 +1,9 @@
 package com.example.shift.presentation
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +42,24 @@ class SearchAndInfoFragment : Fragment(R.layout.fragment_search_info) {
             binding.textViewPhone.text = it.phone
         }
         searchOfBin()
+
+        binding.textViewUrl.setOnClickListener {
+            val URL = "https://"+binding.textViewUrl.text.toString()
+            val intent = Intent (Intent.ACTION_VIEW, Uri.parse(URL))
+            startActivity(intent)
+        }
+
+        binding.textViewPhone.setOnClickListener {
+            val URL = "tel:"+binding.textViewPhone.text
+            val intent = Intent (Intent.ACTION_VIEW, Uri.parse(URL))
+            startActivity(intent)
+        }
+
+        binding.textViewCountry.setOnClickListener {
+            val URL = "geo:"+binding.textViewCountry.text
+            val intent = Intent (Intent.ACTION_VIEW, Uri.parse(URL))
+            startActivity(intent)
+        }
     }
 
     private fun searchOfBin () {
